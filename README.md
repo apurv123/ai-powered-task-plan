@@ -1,22 +1,19 @@
-# ✨ Welcome to Your Spark Template!
-You've just launched your brand-new Spark Template Codespace — everything’s fired up and ready for you to explore, build, and create with Spark!
+# Smart Task Manager
 
-This template is your blank canvas. It comes with a minimal setup to help you get started quickly with Spark development.
+An intelligent task management application that helps users organize their work with AI-powered task breakdown capabilities.
 
-🚀 What's Inside?
-- A clean, minimal Spark environment
-- Pre-configured for local development
-- Ready to scale with your ideas
-  
-🧠 What Can You Do?
+## Key Features
 
-Right now, this is just a starting point — the perfect place to begin building and testing your Spark applications.
+- **Task & Subtask Management** - Create, edit, complete, and delete tasks with nested subtasks
+- **AI-Powered Planning** - Generate intelligent task breakdowns using the "PlanForMe" feature
+- **Persistent Storage** - All tasks and data persist across browser sessions
+- **Secure API Integration** - Safe OpenAI API key storage and management
+- **Responsive Design** - Works seamlessly on desktop and mobile devices
+- **Real-time Updates** - Immediate UI feedback for all user interactions
 
-🧹 Just Exploring?
-No problem! If you were just checking things out and don’t need to keep this code:
+## Documentation
 
-- Simply delete your Spark.
-- Everything will be cleaned up — no traces left behind.
+For detailed project specifications, design decisions, and implementation notes, see the [Product Requirements Document](./PRD.md).
 
 📄 License For Spark Template Resources 
 
