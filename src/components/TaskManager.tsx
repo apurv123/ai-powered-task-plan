@@ -28,9 +28,22 @@ export function TaskManager({ appData, setAppData }: TaskManagerProps) {
   const updateTask = (taskId: string, updates: Partial<any>) => {
     setAppData(prev => ({
       ...prev,
-      tasks: prev.tasks.map(task =>
-        task.id === taskId ? { ...task, ...updates } : task
-      )
+      tasks: prev.tasks.map(task => {
+        if (task.id === taskId) {
+          const updatedTask = { ...task, ...updates }
+          
+          // If the completed status is being changed, update all subtasks accordingly
+          if ('completed' in updates && updates.completed !== task.completed) {
+            updatedTask.subtasks = task.subtasks.map(subtask => ({
+              ...subtask,
+              completed: updates.completed
+            }))
+          }
+          
+          return updatedTask
+        }
+        return task
+      })
     }))
   }
 
@@ -62,16 +75,39 @@ export function TaskManager({ appData, setAppData }: TaskManagerProps) {
   const updateSubtask = (taskId: string, subtaskId: string, updates: Partial<any>) => {
     setAppData(prev => ({
       ...prev,
-      tasks: prev.tasks.map(task =>
-        task.id === taskId
-          ? {
-              ...task,
-              subtasks: task.subtasks.map(subtask =>
-                subtask.id === subtaskId ? { ...subtask, ...updates } : subtask
-              )
+      tasks: prev.tasks.map(task => {
+        if (task.id === taskId) {
+          const updatedSubtasks = task.subtasks.map(subtask =>
+            subtask.id === subtaskId ? { ...subtask, ...updates } : subtask
+          )
+          
+          // If a subtask completion status is being changed
+          if ('completed' in updates) {
+            // If any subtask is marked incomplete, mark parent as incomplete
+            if (!updates.completed) {
+              return {
+                ...task,
+                subtasks: updatedSubtasks,
+                completed: false
+              }
             }
-          : task
-      )
+            // If all subtasks are now complete, mark parent as complete
+            else if (updatedSubtasks.every(subtask => subtask.completed)) {
+              return {
+                ...task,
+                subtasks: updatedSubtasks,
+                completed: true
+              }
+            }
+          }
+          
+          return {
+            ...task,
+            subtasks: updatedSubtasks
+          }
+        }
+        return task
+      })
     }))
   }
 
