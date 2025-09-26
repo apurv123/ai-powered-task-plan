@@ -1,3 +1,4 @@
+// Smart Task Manager - https://github.com/spark-template/smart-task-manager
 import React, { useState } from 'react'
 import { Button } from './ui/button'
 import { Input } from './ui/input'

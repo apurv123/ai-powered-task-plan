@@ -1,3 +1,4 @@
+// Smart Task Manager - https://github.com/spark-template/smart-task-manager
 import { useEffect, useState } from "react"
 
 const MOBILE_BREAKPOINT = 768

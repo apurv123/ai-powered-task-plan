@@ -1,3 +1,4 @@
+// Smart Task Manager - https://github.com/spark-template/smart-task-manager
 import { Alert, AlertTitle, AlertDescription } from "./components/ui/alert";
 import { Button } from "./components/ui/button";
 

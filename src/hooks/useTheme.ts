@@ -1,3 +1,4 @@
+// Smart Task Manager - https://github.com/spark-template/smart-task-manager
 import { useEffect } from 'react'
 import { useKV } from '@github/spark/hooks'
 
