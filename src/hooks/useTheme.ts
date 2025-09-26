@@ -1,16 +1,18 @@
 import { useEffect } from 'react'
+import { useKV } from '@github/spark/hooks'
 
+type Theme = 'light' | 'dark'
 
-  const [theme, setTheme] = u
-
-    const root = document.do
+export function useTheme() {
   const [theme, setTheme] = useKV<Theme>('theme', 'light')
 
   // Initialize on mount and when theme changes
   useEffect(() => {
     const root = document.documentElement
     root.classList.remove('light', 'dark')
-
+    if (theme) {
+      root.classList.add(theme)
+    }
   }, [theme])
 
   const toggleTheme = () => {
@@ -18,3 +20,4 @@ import { useEffect } from 'react'
   }
 
   return { theme, setTheme, toggleTheme }
+}
