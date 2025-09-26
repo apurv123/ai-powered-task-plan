@@ -1,34 +1,23 @@
 import { useEffect } from 'react'
-import { useKV } from '@github/spark/hooks'
 
-export type Theme = 'dark' | 'light'
 
-export function useTheme() {
-  const [theme, setTheme] = useKV<Theme>('theme-preference', 'light')
+  const [theme, setTheme] = useKV<Th
 
-  useEffect(() => {
-    if (!theme) return
     
-    const root = window.document.documentElement
     root.classList.remove('light', 'dark')
-    
-    // Add the theme class to html element for CSS variables
-    if (theme === 'dark') {
-      root.classList.add('dark')
-    } else {
-      root.classList.add('light')
-    }
-  }, [theme])
 
+      root.classLis
+      root.classList.a
+  },
   // Initialize on mount
-  useEffect(() => {
-    const root = window.document.documentElement
-    root.classList.add(theme || 'light')
-  }, [])
+    root.classList.remove('light', 'dark')
+    root.classList.add(theme)
+  }, [theme])
 
   const toggleTheme = () => {
     setTheme((currentTheme) => currentTheme === 'light' ? 'dark' : 'light')
   }
 
-  return { theme: theme || 'light', setTheme, toggleTheme }
+  return { theme, setTheme, toggleTheme }
+}  return { theme: theme || 'light', setTheme, toggleTheme }
 }
